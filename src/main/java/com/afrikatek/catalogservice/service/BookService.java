@@ -1,10 +1,10 @@
-package com.afrikatek.catalogueservice.service;
+package com.afrikatek.catalogservice.service;
 
-import com.afrikatek.catalogueservice.domain.Book;
-import com.afrikatek.catalogueservice.exception.BookAlreadyExistsException;
-import com.afrikatek.catalogueservice.repository.BookRepository;
+import com.afrikatek.catalogservice.domain.Book;
+import com.afrikatek.catalogservice.exception.BookAlreadyExistsException;
+import com.afrikatek.catalogservice.repository.BookRepository;
 import org.springframework.stereotype.Service;
-import com.afrikatek.catalogueservice.exception.BookNotFoundException;
+import com.afrikatek.catalogservice.exception.BookNotFoundException;
 
 @Service
 public class BookService {

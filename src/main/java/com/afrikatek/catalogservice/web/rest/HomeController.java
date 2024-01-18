@@ -1,6 +1,5 @@
-package com.afrikatek.catalogueservice.web.rest;
+package com.afrikatek.catalogservice.web.rest;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

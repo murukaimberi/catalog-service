@@ -1,6 +1,6 @@
-package com.afrikatek.catalogueservice.repository;
+package com.afrikatek.catalogservice.repository;
 
-import com.afrikatek.catalogueservice.domain.Book;
+import com.afrikatek.catalogservice.domain.Book;
 
 import java.util.Optional;
 

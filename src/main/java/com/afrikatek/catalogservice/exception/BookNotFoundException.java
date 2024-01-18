@@ -1,4 +1,4 @@
-package com.afrikatek.catalogueservice.exception;
+package com.afrikatek.catalogservice.exception;
 
 public class BookNotFoundException extends RuntimeException{
     public BookNotFoundException(String isbn) {

@@ -1,7 +1,7 @@
-package com.afrikatek.catalogueservice.persistence;
+package com.afrikatek.catalogservice.persistence;
 
-import com.afrikatek.catalogueservice.domain.Book;
-import com.afrikatek.catalogueservice.repository.BookRepository;
+import com.afrikatek.catalogservice.domain.Book;
+import com.afrikatek.catalogservice.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
