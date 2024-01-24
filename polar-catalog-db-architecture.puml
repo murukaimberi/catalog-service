@@ -1,0 +1,30 @@
+@startuml
+
+component CatalogService [
+    [Container: Spring Boot]
+    Provides functionality for managing books in the catalog
+]
+
+component ConfigService [
+    [Container: Spring Boot]
+    Provides centralized configuration
+]
+
+database "Config Repo" {
+    component DataStore [
+        Stores configuration data
+    ]
+}
+
+database "Catalog Database" {
+    component PostgresSQL [
+        PostgresSQL
+    ]
+}
+
+CatalogService -right-> ConfigService: Gets configuration from [REST/HTTP]
+CatalogService -down-> PostgresSQL: Reads from and writes to [JDBC]
+ConfigService -down-> DataStore: Reads config data from [REST/HTTP]
+
+
+@enduml

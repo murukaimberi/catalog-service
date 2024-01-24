@@ -4,11 +4,13 @@ import com.afrikatek.catalogservice.domain.Book;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("integration")
 class BookControllerIT {
     @Autowired
     private WebTestClient webTestClient;
@@ -16,7 +18,7 @@ class BookControllerIT {
     @Test
     void whenGetRequestWithIdThenBookReturned() {
         var bookIsbn = "1234567890";
-        var bookToCreate = new Book(bookIsbn, "Title", "Author", 9.90);
+        var bookToCreate = Book.of(bookIsbn, "Title", "Author", 9.90, "Publisher");
         Book excpectedBook = webTestClient
                 .post()
                 .uri("/books")
@@ -29,7 +31,7 @@ class BookControllerIT {
 
     @Test
     void whenPostRequestThenBookCreated() {
-        var expectedBook = new Book("1234567893", "Title", "Author", 9.90);
+        var expectedBook = Book.of("1234567893", "Title", "Author", 9.90, "Publisher");
 
         webTestClient
                 .post()
@@ -43,7 +45,7 @@ class BookControllerIT {
     @Test
     void whenPutRequestThenBookUpdated() {
         var bookIsbn = "1234567891";
-        var bookToCreate = new Book(bookIsbn, "Title", "Author", 9.90);
+        var bookToCreate = Book.of(bookIsbn, "Title", "Author", 9.90, "Publisher");
         Book bookCreated = webTestClient
                 .post()
                 .uri("/books")
@@ -53,7 +55,7 @@ class BookControllerIT {
                 .expectBody(Book.class).value(actualBook -> assertThat(actualBook).isNotNull())
                 .returnResult().getResponseBody();
 
-        var bookToUpdate = new Book(bookCreated.isbn(), bookCreated.title(), bookCreated.author(), 7.95);
+        var bookToUpdate = Book.of(bookCreated.isbn(), bookCreated.title(), bookCreated.author(), 7.95, "Publisher");
 
         webTestClient
                 .put()
@@ -70,7 +72,7 @@ class BookControllerIT {
     @Test
     void whenDeleteRequestThenBookDeleted() {
         var bookIsbn = "1234567892";
-        var bookToCreate = new Book(bookIsbn, "Title", "Author", 9.90);
+        var bookToCreate = Book.of(bookIsbn, "Title", "Author", 9.90, "Publisher");
         webTestClient
                 .post()
                 .uri("/books")
