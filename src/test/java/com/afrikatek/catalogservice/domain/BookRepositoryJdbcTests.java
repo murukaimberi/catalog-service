@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
         replace = AutoConfigureTestDatabase.Replace.NONE
 )
 @ActiveProfiles("integration")
-public class BookRepositoryJdbcTests {
+class BookRepositoryJdbcTests {
     @Autowired
     private BookRepository bookRepository;
     @Autowired
