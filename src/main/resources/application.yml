@@ -6,6 +6,7 @@ server:
     threads:
       max: 50
       min-spare: 5
+  shutdown: graceful
 
 polar:
   greeting: Hello form local mumu book store
@@ -23,6 +24,8 @@ spring:
       maximum-pool-size: 5 # The maximum number of connections HikariCP will keep in the pool
   application:
     name: catalog-service
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
   config:
     import: "optional:configserver:"
   cloud:
